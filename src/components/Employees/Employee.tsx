@@ -23,13 +23,19 @@ const Employee = ({ employee }: EmployeeProps) => {
     const typeOfHiring = type === 'CLT' ? 'CLT' : type === 'PJ' ? 'PJ' : 'Não informado'
     return typeOfHiring
   }
+
+  const getDateOfBirth = (date: string) => {
+    const dateOfBirth = new Date(date)
+    return dateOfBirth.toLocaleDateString('pt-BR')
+  }
+
   return (
     <tr key={employee.id} className="hover:bg-gray-50">
       <TableItem text={employee.name} />
       <TableItem text={employee.email} />
       <TableItem text={employee.cpf} />
       <TableItem text={employee.phone} />
-      <TableItem text={employee.dateOfBith} />
+      <TableItem text={getDateOfBirth(employee.dateOfBith)} />
       <TableItem text={getTypeOfHiring(employee.typeOfHiring)} />
       <td className="p-4 font-normal whitespace-nowrap text-sm">
         <span className={getStatusBadge(employee.status)}>{employee.status}</span>
