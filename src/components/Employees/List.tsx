@@ -2,8 +2,25 @@ import { Employee as EmployeeSchema } from '@/schemas/employee'
 import Employee from './Employee'
 import TableHeaderItem from './TableHeaderItem'
 
-const EmployeesList = async () => {
-  const response = await fetch('https://api-testefrontend.qforms.com.br/employees')
+interface EmployeesListProps {
+  searchParams?: { name?: string }
+}
+
+const EmployeesList = async ({ searchParams }: EmployeesListProps) => {
+  const name = searchParams?.name
+
+  const apiUrl = name
+    ? `https://api-testefrontend.qforms.com.br/employees?name=${name}`
+    : 'https://api-testefrontend.qforms.com.br/employees'
+
+  const response = await fetch(apiUrl, {
+    headers: { Accept: 'application/json' },
+  })
+
+  if (response.ok && response.status === 204) {
+    return <div className="p-6 text-center text-black">Nenhum funcionário encontrado</div>
+  }
+
   const employees: EmployeeSchema[] = await response.json()
 
   return (
