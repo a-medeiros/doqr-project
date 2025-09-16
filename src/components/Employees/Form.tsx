@@ -5,6 +5,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { employeeSchema, type Employee } from '@/schemas/employee'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { toast } from 'sonner'
+import { Toaster } from '@/components/ui/sonner'
 
 const Form = () => {
   const {
@@ -26,7 +28,7 @@ const Form = () => {
   })
 
   const onSubmit = async (data: Employee) => {
-    await fetch('https://api-testefrontend.qforms.com.br/employees', {
+    const response = await fetch('https://api-testefrontend.qforms.com.br/employees', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -34,6 +36,12 @@ const Form = () => {
       },
       body: JSON.stringify(data),
     })
+
+    if (response.ok) {
+      toast.success('Funcionário cadastrado com sucesso')
+    } else {
+      toast.error('Erro ao cadastrar funcionário')
+    }
 
     reset()
   }
@@ -55,6 +63,7 @@ const Form = () => {
 
   return (
     <div className="bg-white rounded-lg shadow-sm p-5">
+      <Toaster position="top-center" />
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="space-y-2">
@@ -179,7 +188,6 @@ const Form = () => {
                 id="status"
                 className={selectClasses}
               >
-                <option value="">Selecione uma opção...</option>
                 <option value="ativo">Ativo</option>
                 <option value="inativo">Inativo</option>
               </select>
