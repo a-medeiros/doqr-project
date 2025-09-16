@@ -1,30 +1,30 @@
-import { Employee as EmployeeType } from '@/types/employee.types'
+import { Employee as EmployeeSchema } from '@/schemas/employee'
 import { Button } from '../ui/button'
 import { Edit, Trash2 } from 'lucide-react'
 import TableItem from './TableItem'
 
 type EmployeeProps = {
-  employee: EmployeeType
+  employee: EmployeeSchema
 }
 
 const Employee = ({ employee }: EmployeeProps) => {
-  const getStatusBadge = (status: 'Ativo' | 'Inativo') => {
+  const getStatusBadge = (status: EmployeeSchema['status']) => {
     const baseClasses = 'px-2 py-1 rounded-full text-xs font-medium'
-    if (status === 'Ativo') {
-      return `${baseClasses} bg-green-100 text-green-800`
-    } else if (status === 'Inativo') {
-      return `${baseClasses} bg-red-100 text-red-800`
+    if (status === true) {
+      return <span className={`${baseClasses} bg-green-100 text-green-800`}>Ativo</span>
+    } else if (status === false) {
+      return <span className={`${baseClasses} bg-red-100 text-red-800`}>Inativo</span>
     } else {
       return ''
     }
   }
 
-  const getTypeOfHiring = (type: 'CLT' | 'PJ') => {
+  const getTypeOfHiring = (type: EmployeeSchema['typeOfHiring']) => {
     const typeOfHiring = type === 'CLT' ? 'CLT' : type === 'PJ' ? 'PJ' : 'Não informado'
     return typeOfHiring
   }
 
-  const getDateOfBirth = (date: string) => {
+  const getDateOfBirth = (date: EmployeeSchema['dateOfBith']) => {
     const dateOfBirth = new Date(date)
     return dateOfBirth.toLocaleDateString('pt-BR')
   }
@@ -38,7 +38,7 @@ const Employee = ({ employee }: EmployeeProps) => {
       <TableItem text={getDateOfBirth(employee.dateOfBith)} />
       <TableItem text={getTypeOfHiring(employee.typeOfHiring)} />
       <td className="p-4 font-normal whitespace-nowrap text-sm">
-        <span className={getStatusBadge(employee.status)}>{employee.status}</span>
+        {getStatusBadge(employee.status)}
       </td>
       <td className="p-4 font-normal whitespace-nowrap text-sm">
         <div className="flex space-x-2">

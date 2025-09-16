@@ -1,11 +1,10 @@
-import React from 'react'
-import { Employee as EmployeeType } from '@/types/employee.types'
+import { Employee as EmployeeSchema } from '@/schemas/employee'
 import Employee from './Employee'
 import TableHeaderItem from './TableHeaderItem'
 
 const EmployeesList = async () => {
   const response = await fetch('https://api-testefrontend.qforms.com.br/employees')
-  const employees: EmployeeType[] = await response.json()
+  const employees: EmployeeSchema[] = await response.json()
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">

@@ -1,6 +1,5 @@
 import EmployeesList from '@/components/Employees/List'
-import { Button } from '@/components/ui/button'
-import { Plus } from 'lucide-react'
+import NewEmployee from '@/components/Employees/NewEmployee'
 
 export default function Home() {
   return (
@@ -11,11 +10,9 @@ export default function Home() {
       </div>
 
       <div className="mb-3">
-        <Button className="gap-[2.5px] cursor-pointer">
-          <Plus className="w-4 h-4" size={14} />
-          Novo Funcionário
-        </Button>
+        <NewEmployee />
       </div>
+
       <EmployeesList />
     </div>
   )
