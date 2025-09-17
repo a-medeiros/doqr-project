@@ -1,6 +1,6 @@
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
-import Form from '@/components/Employees/Form'
+import CreateEmployee from '@/components/Employees/CreateEmployee'
 
 const NewEmployeePage = () => {
   return (
@@ -16,7 +16,7 @@ const NewEmployeePage = () => {
         <p className="text-xl font-bold text-[#0B0B0C]">Empresa DoQR Tecnologia</p>
       </div>
 
-      <Form />
+      <CreateEmployee />
     </div>
   )
 }

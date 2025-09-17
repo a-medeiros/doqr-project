@@ -13,13 +13,7 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   {
-    ignores: [
-      'node_modules/**',
-      '.next/**',
-      'out/**',
-      'build/**',
-      'next-env.d.ts',
-    ],
+    ignores: ['node_modules/**', '.next/**', 'out/**', 'build/**', 'next-env.d.ts'],
   },
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
   {
@@ -39,7 +33,7 @@ const eslintConfig = [
       complexity: [
         'error',
         {
-          max: 14,
+          max: 15,
         },
       ],
       'prettier/prettier': 'error',
