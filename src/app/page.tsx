@@ -2,11 +2,13 @@ import EmployeesList from '@/components/Employees/List'
 import NewEmployee from '@/components/Employees/NewEmployee'
 import Search from '@/components/Employees/Search'
 
-interface HomeProps {
+type HomeProps = {
   searchParams?: { name?: string }
 }
 
-export default function Home({ searchParams }: HomeProps) {
+export default async function Home({ searchParams }: HomeProps) {
+  const resolvedSearchParams = await searchParams
+
   return (
     <div className=" px-[130px] pt-8 pb-8 gap-16">
       <div className="flex flex-col gap-2 mb-8">
@@ -19,7 +21,7 @@ export default function Home({ searchParams }: HomeProps) {
         <NewEmployee />
       </div>
 
-      <EmployeesList searchParams={searchParams} />
+      <EmployeesList searchParams={resolvedSearchParams ?? {}} />
     </div>
   )
 }

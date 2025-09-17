@@ -2,8 +2,8 @@ import { Employee as EmployeeSchema } from '@/schemas/employee'
 import Employee from './Employee'
 import TableHeaderItem from './TableHeaderItem'
 
-interface EmployeesListProps {
-  searchParams?: { name?: string }
+type EmployeesListProps = {
+  searchParams: { name?: string }
 }
 
 const EmployeesList = async ({ searchParams }: EmployeesListProps) => {
