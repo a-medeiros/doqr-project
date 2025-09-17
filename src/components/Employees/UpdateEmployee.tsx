@@ -6,6 +6,7 @@ import { employeeSchema, type Employee } from '@/schemas/employee'
 import { toast } from 'sonner'
 import { Toaster } from '@/components/ui/sonner'
 import Form from './Form'
+import { convertToDate } from '@/lib/convertToDate'
 
 type UpdateEmployeeProps = {
   employee?: Employee
@@ -16,7 +17,7 @@ const getDefaultValues = (employee?: Employee) => ({
   email: employee?.email || '',
   cpf: employee?.cpf || '',
   phone: employee?.phone || '',
-  dateOfBith: employee?.dateOfBith || '',
+  dateOfBith: convertToDate(employee?.dateOfBith),
   typeOfHiring: employee?.typeOfHiring || undefined,
   status: employee?.status || undefined,
 })
@@ -62,6 +63,7 @@ const UpdateEmployee = ({ employee }: UpdateEmployeeProps) => {
         errors={errors}
         isEditMode={true}
         employeeId={employee?.id}
+        employeeStatus={employee?.status}
       />
     </div>
   )

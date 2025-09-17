@@ -13,9 +13,17 @@ type FormProps = {
   errors: FieldErrors<Employee>
   isEditMode?: boolean
   employeeId?: number
+  employeeStatus?: boolean
 }
 
-const Form = ({ handleSubmit, register, errors, isEditMode = false, employeeId }: FormProps) => {
+const Form = ({
+  handleSubmit,
+  register,
+  errors,
+  isEditMode = false,
+  employeeId,
+  employeeStatus,
+}: FormProps) => {
   const router = useRouter()
 
   const handleDelete = async () => {
@@ -169,13 +177,14 @@ const Form = ({ handleSubmit, register, errors, isEditMode = false, employeeId }
           <div className="relative">
             <select
               {...register('status', {
-                setValueAs: (value: string) => value === 'ativo',
+                setValueAs: (value: string) => value === 'true',
               })}
               id="status"
               className={selectClasses}
+              defaultValue={String(employeeStatus)}
             >
-              <option value="ativo">Ativo</option>
-              <option value="inativo">Inativo</option>
+              <option value="true">Ativo</option>
+              <option value="false">Inativo</option>
             </select>
             <div
               className="absolute inset-y-0 right-0 flex 
