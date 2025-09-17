@@ -54,7 +54,7 @@ const UpdateEmployee = ({ employee }: UpdateEmployeeProps) => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-5">
+    <div className="bg-white rounded-lg shadow-[0_0_15px_rgba(0,0,0,0.1)] p-5">
       <Toaster position="top-center" />
       <Form
         handleSubmit={handleSubmit(onSubmit)}

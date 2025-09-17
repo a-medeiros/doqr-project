@@ -27,7 +27,7 @@ const EmployeesList = async ({ searchParams }: EmployeesListProps) => {
     <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full">
-          <thead className="bg-gray-50 border-b-1 border-[#CDCAD2]">
+          <thead className="bg-gray-50 border-b-1 border-soft-gray">
             <TableHeaderItem />
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">

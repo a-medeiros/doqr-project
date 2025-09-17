@@ -21,7 +21,7 @@ const Search = () => {
             type="text"
             value={name}
             placeholder={'Buscar Funcionário...'}
-            className="w-[383px] h-[35px] pr-10"
+            className="md:w-[383px] w-full h-[35px] pr-10"
             onChange={e => {
               setName(e.target.value)
             }}

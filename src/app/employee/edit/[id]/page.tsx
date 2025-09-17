@@ -33,7 +33,7 @@ const EditEmployeePage = async ({ params }: EditEmployeePageProps) => {
   }
 
   return (
-    <div className="px-[130px] pt-8 pb-8 gap-16">
+    <div className="md:px-[130px] px-4 pt-8 pb-8 gap-16">
       <div className="flex mb-4">
         <Link href="/" className="flex items-center gap-2 w-[70px]">
           <ArrowLeft size={14} />

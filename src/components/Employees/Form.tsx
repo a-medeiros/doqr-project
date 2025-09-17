@@ -37,16 +37,16 @@ const Form = ({ handleSubmit, register, errors, isEditMode = false, employeeId }
   }
 
   const inputClasses = cn(
-    'w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm',
+    'w-full px-3 py-2 border border-soft-gray rounded-sm',
     'focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent',
-    'placeholder-gray-400 text-sm',
+    'placeholder-gray-400 text-base',
     'disabled:bg-gray-50 disabled:text-gray-500',
   )
 
   const selectClasses = cn(
-    'w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm',
+    'w-full px-3 py-2 border border-soft-gray rounded-sm',
     'focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent',
-    'text-sm bg-white',
+    'text-base bg-white',
     'appearance-none cursor-pointer',
     'pr-8',
   )
@@ -55,7 +55,7 @@ const Form = ({ handleSubmit, register, errors, isEditMode = false, employeeId }
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="space-y-2">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="name" className="block text-base font-medium text-black">
             Nome
           </label>
           <input
@@ -69,7 +69,7 @@ const Form = ({ handleSubmit, register, errors, isEditMode = false, employeeId }
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="email" className="block text-base font-medium text-black">
             E-mail
           </label>
           <input
@@ -83,7 +83,7 @@ const Form = ({ handleSubmit, register, errors, isEditMode = false, employeeId }
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="cpf" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="cpf" className="block text-base font-medium text-black">
             CPF
           </label>
           <input
@@ -99,7 +99,7 @@ const Form = ({ handleSubmit, register, errors, isEditMode = false, employeeId }
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="space-y-2">
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="phone" className="block text-base font-medium text-black">
             Celular
           </label>
           <input
@@ -113,7 +113,7 @@ const Form = ({ handleSubmit, register, errors, isEditMode = false, employeeId }
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="dateOfBith" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="dateOfBith" className="block text-base font-medium text-black">
             Data de Nascimento
           </label>
           <input
@@ -127,7 +127,7 @@ const Form = ({ handleSubmit, register, errors, isEditMode = false, employeeId }
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="typeOfHiring" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="typeOfHiring" className="block text-base font-medium text-black">
             Tipo de Contratação
           </label>
           <div className="relative">
@@ -163,7 +163,7 @@ const Form = ({ handleSubmit, register, errors, isEditMode = false, employeeId }
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="space-y-2">
-          <label htmlFor="status" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="status" className="block text-base font-medium text-black">
             Status
           </label>
           <div className="relative">
@@ -200,21 +200,21 @@ const Form = ({ handleSubmit, register, errors, isEditMode = false, employeeId }
         </div>
       </div>
 
-      <div className="flex pt-4 gap-4">
+      <div className="flex pt-2 gap-4">
         {isEditMode ? (
           <>
             <Button
               type="button"
               onClick={handleDelete}
-              className="bg-red-500 hover:bg-red-600 
-                text-white px-8 py-2 rounded-md font-medium cursor-pointer"
+              className="bg-delete-button hover:bg-red-600 
+                text-white px-4 py-2 rounded-md font-bold cursor-pointer"
             >
               Excluir
             </Button>
             <Button
               type="submit"
-              className="bg-violet-600 hover:bg-violet-700 
-                text-white px-8 py-2 rounded-md font-medium cursor-pointer"
+              className="bg-save-button hover:bg-violet-700 
+                text-white px-4 py-2 rounded-md font-bold cursor-pointer"
             >
               Salvar
             </Button>
@@ -222,8 +222,8 @@ const Form = ({ handleSubmit, register, errors, isEditMode = false, employeeId }
         ) : (
           <Button
             type="submit"
-            className="bg-violet-600 hover:bg-violet-700 
-              text-white px-8 py-2 rounded-md font-medium cursor-pointer"
+            className="bg-save-button hover:bg-violet-700 
+              text-white px-4 py-2 rounded-md font-bold cursor-pointer"
           >
             Cadastrar
           </Button>
