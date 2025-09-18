@@ -50,6 +50,7 @@ const Employee = ({ employee }: EmployeeProps) => {
         <td className="p-4 font-normal whitespace-nowrap text-sm">
           <div className="flex space-x-2">
             <Button
+              data-cy="edit-employee-button"
               variant="ghost"
               size="icon"
               className="h-8 w-8 p-0 hover:bg-gray-100 cursor-pointer"

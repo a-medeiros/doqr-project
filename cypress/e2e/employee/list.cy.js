@@ -29,5 +29,21 @@ describe('Employee List', () => {
 
       cy.get('[data-cy=empty-state]').should('not.exist')
     })
+
+    it('redirects to edit page when edit button is clicked', () => {
+      cy.contains('[data-cy=employees-table] tbody tr', 'Ana').within(() => {
+        cy.get('[data-cy=edit-employee-button]').click()
+      })
+
+      cy.url().should('include', '/employee/edit/1')
+    })
+
+    it('redirects to correct edit page for different employees', () => {
+      cy.contains('[data-cy=employees-table] tbody tr', 'João').within(() => {
+        cy.get('[data-cy=edit-employee-button]').click()
+      })
+
+      cy.url().should('include', '/employee/edit/2')
+    })
   })
 })
