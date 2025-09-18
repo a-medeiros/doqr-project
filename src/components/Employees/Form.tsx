@@ -60,7 +60,7 @@ const Form = ({
   )
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6" data-cy="employee-form">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="space-y-2">
           <label htmlFor="name" className="block text-base font-medium text-black">
@@ -72,6 +72,7 @@ const Form = ({
             id="name"
             placeholder="Nome"
             className={inputClasses}
+            data-cy="name-input"
           />
           {errors.name && <p className="text-sm text-red-600">{errors.name.message}</p>}
         </div>
@@ -86,6 +87,7 @@ const Form = ({
             id="email"
             placeholder="e-mail"
             className={inputClasses}
+            data-cy="email-input"
           />
           {errors.email && <p className="text-sm text-red-600">{errors.email.message}</p>}
         </div>
@@ -100,6 +102,7 @@ const Form = ({
             id="cpf"
             placeholder="000.000.000-00"
             className={inputClasses}
+            data-cy="cpf-input"
           />
           {errors.cpf && <p className="text-sm text-red-600">{errors.cpf.message}</p>}
         </div>
@@ -116,6 +119,7 @@ const Form = ({
             id="phone"
             placeholder="(99) 99999-9999"
             className={inputClasses}
+            data-cy="phone-input"
           />
           {errors.phone && <p className="text-sm text-red-600">{errors.phone.message}</p>}
         </div>
@@ -130,6 +134,7 @@ const Form = ({
             id="dateOfBith"
             placeholder="00/00/0000"
             className={inputClasses}
+            data-cy="date-of-birth-input"
           />
           {errors.dateOfBith && <p className="text-sm text-red-600">{errors.dateOfBith.message}</p>}
         </div>
@@ -139,7 +144,12 @@ const Form = ({
             Tipo de Contratação
           </label>
           <div className="relative">
-            <select {...register('typeOfHiring')} id="typeOfHiring" className={selectClasses}>
+            <select
+              {...register('typeOfHiring')}
+              id="typeOfHiring"
+              className={selectClasses}
+              data-cy="type-of-hiring-select"
+            >
               <option value="">Selecione uma opção...</option>
               <option value="CLT">CLT</option>
               <option value="PJ">PJ</option>
@@ -182,6 +192,7 @@ const Form = ({
               id="status"
               className={selectClasses}
               defaultValue={String(employeeStatus)}
+              data-cy="status-select"
             >
               <option value="true">Ativo</option>
               <option value="false">Inativo</option>
@@ -217,6 +228,7 @@ const Form = ({
               onClick={handleDelete}
               className="bg-delete-button hover:bg-red-600 
                 text-white px-4 py-2 rounded-md font-bold cursor-pointer"
+              data-cy="delete-button"
             >
               Excluir
             </Button>
@@ -224,6 +236,7 @@ const Form = ({
               type="submit"
               className="bg-save-button hover:bg-violet-700 
                 text-white px-4 py-2 rounded-md font-bold cursor-pointer"
+              data-cy="save-button"
             >
               Salvar
             </Button>
@@ -233,6 +246,7 @@ const Form = ({
             type="submit"
             className="bg-save-button hover:bg-violet-700 
               text-white px-4 py-2 rounded-md font-bold cursor-pointer"
+            data-cy="create-button"
           >
             Cadastrar
           </Button>

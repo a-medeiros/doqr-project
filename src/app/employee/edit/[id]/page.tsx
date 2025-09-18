@@ -14,7 +14,7 @@ const EditEmployeePage = async ({ params }: EditEmployeePageProps) => {
   let employee: Employee | null = null
 
   try {
-    const response = await fetch(`https://api-testefrontend.qforms.com.br/employees/${id}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/employees/${id}`, {
       headers: { Accept: 'application/json' },
       cache: 'no-store',
     })

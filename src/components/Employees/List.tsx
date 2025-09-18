@@ -8,7 +8,7 @@ type EmployeesListProps = {
 
 const EmployeesList = async ({ searchParams }: EmployeesListProps) => {
   const name = searchParams?.name
-  const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
+  const apiBaseUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/employees`
 
   if (!apiBaseUrl) {
     throw new Error('API_BASE_URL is not defined')

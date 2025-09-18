@@ -27,7 +27,7 @@ const CreateEmployee = () => {
   })
 
   const onSubmit = async (data: Employee) => {
-    const response = await fetch('https://api-testefrontend.qforms.com.br/employees', {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/employees`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -1,14 +1,17 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Header = () => {
   return (
     <header className="bg-white border-b px-6 py-4 border-[#E5E3E9]">
       <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-4">
-          <Image src="/header-icon.svg" alt="Logo" width={32} height={32} />
-          <span className="text-base font-bold text-black">Teste Dqpr</span>
-        </div>
+        <Link href="/">
+          <div className="flex items-center space-x-4">
+            <Image src="/header-icon.svg" alt="Logo" width={32} height={32} />
+            <span className="text-base font-bold text-black">Teste Dqpr</span>
+          </div>
+        </Link>
 
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 bg-purple-300 rounded-full flex items-center justify-center">
