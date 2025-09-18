@@ -1,0 +1,7 @@
+{ 
+  "employees": [
+    { "id": 1, "name": "Ana", "email": "ana@example.com", "status": true, "cpf": "12345678901", "phone": "12345678901", "dateOfBith": "2000-09-20", "typeOfHiring": "CLT" },
+    { "id": 2, "name": "João", "email": "joao@example.com", "status": false, "cpf": "12345678901", "phone": "12345678901", "dateOfBith": "1980-10-01", "typeOfHiring": "PJ" }
+  ] 
+}
+  

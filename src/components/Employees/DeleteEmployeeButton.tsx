@@ -32,7 +32,7 @@ const DeleteEmployeeButton = ({ employeeId }: DeleteEmployeeButtonProps) => {
           handleDelete(employeeId)
         }}
       >
-        <Trash className="text-[#0B0B0C]" width={16} height={18} />
+        <Trash className="text-graphite" width={16} height={18} />
       </Button>
     </>
   )

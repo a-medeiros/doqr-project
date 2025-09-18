@@ -7,7 +7,7 @@ const Header = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <Image src="/header-icon.svg" alt="Logo" width={32} height={32} />
-          <h1 className="text-base font-bold text-black">Teste Dqpr</h1>
+          <span className="text-base font-bold text-black">Teste Dqpr</span>
         </div>
 
         <div className="flex items-center space-x-3">

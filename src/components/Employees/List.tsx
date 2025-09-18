@@ -8,17 +8,24 @@ type EmployeesListProps = {
 
 const EmployeesList = async ({ searchParams }: EmployeesListProps) => {
   const name = searchParams?.name
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
 
-  const apiUrl = name
-    ? `https://api-testefrontend.qforms.com.br/employees?name=${name}`
-    : 'https://api-testefrontend.qforms.com.br/employees'
+  if (!apiBaseUrl) {
+    throw new Error('API_BASE_URL is not defined')
+  }
+
+  const apiUrl = name ? `${apiBaseUrl}?name=${encodeURIComponent(name)}` : apiBaseUrl
 
   const response = await fetch(apiUrl, {
     headers: { Accept: 'application/json' },
   })
 
   if (response.ok && response.status === 204) {
-    return <div className="p-6 text-center text-black">Nenhum funcionário encontrado</div>
+    return (
+      <div data-cy="empty-state" className="p-6 text-center text-black">
+        Nenhum funcionário encontrado
+      </div>
+    )
   }
 
   const employees: EmployeeSchema[] = await response.json()
@@ -26,7 +33,7 @@ const EmployeesList = async ({ searchParams }: EmployeesListProps) => {
   return (
     <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
       <div className="overflow-x-auto">
-        <table className="w-full">
+        <table data-cy="employees-table" className="w-full">
           <thead className="bg-gray-50 border-b-1 border-soft-gray">
             <TableHeaderItem />
           </thead>

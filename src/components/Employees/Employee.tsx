@@ -30,7 +30,8 @@ const Employee = ({ employee }: EmployeeProps) => {
   }
 
   const getDateOfBirth = (date: EmployeeSchema['dateOfBith']) => {
-    const dateOfBirth = new Date(date)
+    const [year, month, day] = date.split('-')
+    const dateOfBirth = new Date(parseInt(year), parseInt(month) - 1, parseInt(day))
     return dateOfBirth.toLocaleDateString('pt-BR')
   }
 
@@ -56,7 +57,7 @@ const Employee = ({ employee }: EmployeeProps) => {
                 router.push(`/employee/edit/${employee.id}`)
               }}
             >
-              <Edit className="h-4 w-4 text-[#0B0B0C]" />
+              <Edit className="h-4 w-4 text-graphite" />
             </Button>
             {employee.id && <DeleteEmployeeButton employeeId={employee.id} />}
           </div>

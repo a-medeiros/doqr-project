@@ -42,7 +42,7 @@ const EditEmployeePage = async ({ params }: EditEmployeePageProps) => {
       </div>
       <div className="flex flex-col gap-2 mb-8">
         <h1 className="text-4xl font-bold text-black">Editar Funcionário</h1>
-        <p className="text-xl font-bold text-[#0B0B0C]">Empresa DoQR Tecnologia</p>
+        <p className="text-xl font-bold text-graphite">Empresa DoQR Tecnologia</p>
       </div>
 
       <UpdateEmployee employee={employee} />
