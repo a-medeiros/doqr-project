@@ -21,7 +21,7 @@ npm install
 npm run dev
 ```
 
-4. Open http://localhost:3000 in your browser.
+3. Open http://localhost:3000 in your browser.
 
 ## How to Run Tests
 
@@ -35,6 +35,7 @@ NEXT_PUBLIC_API_BASE_URL=http://localhost:4000/ npm run dev
 npm run mock:api
 ```
 
+3. Run tests
 ```bash
 npx cypress open
 ```
