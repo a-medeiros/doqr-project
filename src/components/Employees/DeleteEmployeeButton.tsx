@@ -3,12 +3,15 @@ import { Trash } from 'lucide-react'
 import { Button } from '../ui/button'
 import { toast } from 'sonner'
 import { Toaster } from '@/components/ui/sonner'
+import { useRouter } from 'next/navigation'
 
 type DeleteEmployeeButtonProps = {
   employeeId: number
 }
 
 const DeleteEmployeeButton = ({ employeeId }: DeleteEmployeeButtonProps) => {
+  const router = useRouter()
+
   const handleDelete = async (id: number) => {
     const response = await fetch(`https://api-testefrontend.qforms.com.br/employees/${id}`, {
       method: 'DELETE',
@@ -16,6 +19,7 @@ const DeleteEmployeeButton = ({ employeeId }: DeleteEmployeeButtonProps) => {
 
     if (response.ok) {
       toast.success('Funcionário deletado com sucesso')
+      router.push('/')
     } else {
       toast.error('Erro ao deletar funcionário')
     }
