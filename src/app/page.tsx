@@ -3,7 +3,7 @@ import NewEmployee from '@/components/Employees/NewEmployee'
 import Search from '@/components/Employees/Search'
 
 type HomeProps = {
-  searchParams?: { name?: string }
+  searchParams?: Promise<{ name?: string }>
 }
 
 export default async function Home({ searchParams }: HomeProps) {
