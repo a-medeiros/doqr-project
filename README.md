@@ -11,17 +11,22 @@ cd doqr-project
 
 ## How to Run
 
-1. Install dependencies:
+1. Create a `.env` file in the root directory (copy from `.env.example` if it exists):
+```bash
+cp .env.example .env
+```
+
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-2. Start the development server:
+3. Start the development server:
 ```bash
 npm run dev
 ```
 
-3. Open http://localhost:3000 in your browser.
+4. Open http://localhost:3000 in your browser.
 
 ## How to Run Tests
 
