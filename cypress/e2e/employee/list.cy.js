@@ -4,7 +4,7 @@ describe('Employee List', () => {
       cy.visit('http://localhost:3000/')
     })
 
-    it('renders rows', () => {
+    it('show a list of employees', () => {
       cy.get('h1').should('have.text', 'Controle de Funcionários')
       cy.get('button').should('have.text', 'Novo Funcionário')
       cy.get('input').should('have.attr', 'placeholder', 'Buscar Funcionário...')

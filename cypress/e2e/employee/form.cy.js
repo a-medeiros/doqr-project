@@ -22,9 +22,26 @@ describe('Employee Form', () => {
       cy.contains('Nome é obrigatório').should('be.visible')
       cy.contains('E-mail inválido').should('be.visible')
       cy.contains('CPF é obrigatório').should('be.visible')
+      cy.contains('Celular é obrigatório').should('be.visible')
+      cy.contains('Data de nascimento é obrigatória').should('be.visible')
+      cy.contains('Tipo de contratação é obrigatório').should('be.visible')
     })
 
-    it('fills and submits form successfully', () => {
+    it.only('fills and submits form successfully', () => {
+      cy.intercept('POST', '**/employees', req => {
+        expect(req.headers['content-type']).to.include('application/json')
+        expect(req.body).to.include({
+          name: 'João Silva',
+          email: 'joao@example.com',
+          typeOfHiring: 'CLT',
+          status: false,
+          cpf: '12345678901',
+          phone: '11999887766',
+          dateOfBith: '1990-05-15',
+        })
+        req.reply({ statusCode: 201, body: { id: 123 } })
+      }).as('createEmployee')
+
       cy.get('[data-cy="name-input"]').type('João Silva')
       cy.get('[data-cy="email-input"]').type('joao@example.com')
       cy.get('[data-cy="cpf-input"]').type('12345678901')
@@ -32,6 +49,18 @@ describe('Employee Form', () => {
       cy.get('[data-cy="date-of-birth-input"]').type('1990-05-15')
       cy.get('[data-cy="type-of-hiring-select"]').select('CLT')
       cy.get('[data-cy="status-select"]').select('false')
+
+      cy.get('[data-cy="create-button"]').click()
+      cy.wait('@createEmployee')
+      cy.contains('Funcionário cadastrado com sucesso').should('be.visible')
+
+      cy.get('[data-cy="name-input"]').should('have.value', '')
+      cy.get('[data-cy="email-input"]').should('have.value', '')
+      cy.get('[data-cy="cpf-input"]').should('have.value', '')
+      cy.get('[data-cy="phone-input"]').should('have.value', '')
+      cy.get('[data-cy="date-of-birth-input"]').should('have.value', '')
+      cy.get('[data-cy="type-of-hiring-select"]').should('have.value', '')
+      cy.get('[data-cy="status-select"]').should('have.value', 'true')
     })
   })
 
