@@ -27,7 +27,7 @@ describe('Employee Form', () => {
       cy.contains('Tipo de contratação é obrigatório').should('be.visible')
     })
 
-    it.only('fills and submits form successfully', () => {
+    it('fills and submits form successfully', () => {
       cy.intercept('POST', '**/employees', req => {
         expect(req.headers['content-type']).to.include('application/json')
         expect(req.body).to.include({
@@ -69,7 +69,7 @@ describe('Employee Form', () => {
       cy.visit('http://localhost:3000/employee/edit/1')
     })
 
-    it('renders form in edit mode', () => {
+    it('renders form in edit mode, fills and submits form successfully', () => {
       cy.get('h1').should('contain.text', 'Editar Funcionário')
       cy.get('[data-cy="employee-form"]').should('exist')
 
@@ -83,6 +83,32 @@ describe('Employee Form', () => {
 
       cy.get('[data-cy="save-button"]').should('contain.text', 'Salvar')
       cy.get('[data-cy="delete-button"]').should('contain.text', 'Excluir')
+
+      cy.intercept('PUT', '**/employees/1', req => {
+        expect(req.headers['content-type']).to.include('application/json')
+        expect(req.body).to.include({
+          name: 'Ana Blablabla',
+          email: 'ana222@example.com',
+          cpf: '12345678902',
+          phone: '12345678902',
+          dateOfBith: '2001-10-21',
+          typeOfHiring: 'PJ',
+          status: false,
+        })
+        req.reply({ statusCode: 200, body: { id: 1 } })
+      }).as('updateEmployee')
+
+      cy.get('[data-cy="name-input"]').clear().type('Ana Blablabla')
+      cy.get('[data-cy="email-input"]').clear().type('ana222@example.com')
+      cy.get('[data-cy="cpf-input"]').clear().type('12345678902')
+      cy.get('[data-cy="phone-input"]').clear().type('12345678902')
+      cy.get('[data-cy="date-of-birth-input"]').clear().type('2001-10-21')
+      cy.get('[data-cy="type-of-hiring-select"]').select('PJ')
+      cy.get('[data-cy="status-select"]').select('false')
+
+      cy.get('[data-cy="save-button"]').click()
+      cy.wait('@updateEmployee')
+      cy.contains('Funcionário atualizado com sucesso').should('be.visible')
     })
   })
 })
